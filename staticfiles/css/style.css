@@ -1,0 +1,779 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Centered Navigation */
+.centered-nav {
+    background-color: #34495e;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    text-align: center; /* সবকিছু মাঝে রাখার জন্য */
+}
+
+.nav-header {
+    margin-bottom: 10px; /* WelcomeDreams এবং নিচের লাইনের মধ্যে দূরত্ব */
+}
+
+.site-title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffffff; /* WelcomeDreams সাদা কালার */
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center; /* নিচের লাইন মাঝখানে */
+    align-items: center;
+}
+
+.nav-links a, .nav-links span {
+    color: #ecf0f1;
+    text-decoration: none;
+    margin: 0 20px; /* প্রতিটি এলিমেন্টের মধ্যে ডিফল্ট দূরত্ব */
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #3498db;
+}
+
+.welcome-text {
+    margin-right: 40px; /* Welcome, nazmul! এবং Logout এর মধ্যে ফাঁকা জায়গা */
+}
+
+.logout-btn {
+    padding: 8px 16px; /* ফাঁকা জায়গা যোগ করা */
+    background-color: #3498db; /* বাটনের মতো লুক */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #2980b9;
+    color: #ecf0f1;
+}
+
+/* Dropdown Styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.dropdown-toggle:hover {
+    color: #3498db;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #2c3e50;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-menu a {
+    color: #ecf0f1;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+    background-color: #34495e;
+    color: #3498db;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* General Styling */
+h1, h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+.message {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.book-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.book-card {
+    background-color: #fff;
+    width: 300px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+}
+
+.book-card h3 {
+    font-size: 20px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.book-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.book-card p strong {
+    color: #333;
+}
+
+.book-card a {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.book-card a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.home-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.home-container h2 {
+    margin-top: 20px;
+    color: #2c3e50;
+}
+
+.home-container p {
+    font-size: 18px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.review-container {
+    margin-top: 20px;
+}
+
+.review-card {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.review-card p {
+    margin: 5px 0;
+}
+
+.review-card small {
+    color: #999;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column; /* ছোট স্ক্রিনে উল্লম্বভাবে সাজানো */
+    }
+
+    .nav-links a, .nav-links span {
+        margin: 10px 0;
+    }
+
+    .welcome-text {
+        margin-right: 0; /* ছোট স্ক্রিনে ফাঁকা কমানো */
+    }
+
+    .site-title {
+        font-size: 24px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    .book-container {
+        width: 90%;
+    }
+}
+
+/* Download Link */
+.download-link {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #2ecc71;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.download-link:hover {
+    background-color: #27ae60;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+
+/* Book Image */
+.book-card .book-image {
+    width: 200px !important;       /* নির্দিষ্ট প্রস্থ */
+    height: 200px !important;      /* নির্দিষ্ট উচ্চতা */
+    object-fit: cover;             /* ইমেজ ক্রপ করে ফিট করবে */
+    border-radius: 5px;            /* গোলাকার বর্ডার */
+    margin-bottom: 10px;           /* নিচে ফাঁকা */
+    display: block;                /* কেন্দ্রে রাখার জন্য */
+    margin-left: auto;             /* কেন্দ্রে আনা */
+    margin-right: auto;            /* কেন্দ্রে আনা */
+} 
+
+.book-types {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.book-type {
+    position: relative;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+.book-type:hover .authors {
+    display: block;
+}
+.authors {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1;
+    white-space: nowrap;
+}
+.authors a {
+    text-decoration: none;
+    color: #007bff;
+}
+.authors a:hover {
+    text-decoration: underline;
+}
+
+.book-list-wrapper {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.book-list-wrapper h2 {
+    font-size: 2em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.book-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.book-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+}
+
+.book-card h3 {
+    font-size: 1.5em;
+    color: #34495e;
+    margin: 10px 0;
+}
+
+.book-card h3 a {
+    text-decoration: none;
+    color: #3498db;
+}
+
+.book-card h3 a:hover {
+    text-decoration: underline;
+}
+
+.book-card p {
+    font-size: 1em;
+    color: #555;
+    margin: 5px 0;
+}
+
+.book-card strong {
+    color: #333;
+}
+
+.download-link {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #e74c3c;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.download-link:hover {
+    background-color: #c0392b;
+}
+
+.add-book-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #2ecc71;
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.add-book-btn:hover {
+    background-color: #27ae60;
+    transform: translateY(-3px);
+}
+
+
+
+/* static/css/style.css */
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Book Detail Container */
+.book-detail-container {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #ffffff 0%, #eef2f6 100%);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.book-detail-container h1 {
+    text-align: center;
+    color: #1e40af;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Book Info Section */
+.book-info {
+    display: flex;
+    gap: 40px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.book-image {
+    flex: 0 0 350px;
+}
+
+.book-img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #e5e7eb;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.book-details {
+    flex: 1;
+    padding: 20px;
+    background: #f9fafb;
+    border-radius: 8px;
+}
+
+.book-details p {
+    margin: 15px 0;
+    font-size: 1.1em;
+    color: #374151;
+    line-height: 1.6;
+}
+
+.book-details p strong {
+    color: #1e40af;
+    font-weight: 600;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 1em;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.download-btn:hover {
+    background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
+    transform: translateY(-2px);
+}
+
+/* Reviews Section */
+.reviews-container {
+    margin-top: 40px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.reviews-container h2 {
+    color: #1e40af;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.review {
+    padding: 15px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.review p {
+    margin: 8px 0;
+    color: #374151;
+}
+
+.review p strong {
+    color: #1e40af;
+}
+
+.review small {
+    color: #6b7280;
+    font-size: 0.9em;
+}
+
+/* Review Form */
+.review-form-container {
+    margin-top: 40px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.review-form-container h3 {
+    color: #1e40af;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #1e40af;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #374151;
+}
+
+.form-textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.submit-btn {
+    display: inline-block;
+    padding: 10px 30px;
+    background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .book-info {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .book-image {
+        flex: none;
+        width: 100%;
+    }
+
+    .book-img {
+        max-height: 300px;
+    }
+
+    .book-details {
+        padding: 15px;
+    }
+
+    .download-btn, .submit-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 50%;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+input[type="checkbox"] {
+    width: auto;
+    margin-left: 10px;
+}
+
+button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #218838;
+}
+
+/* ✅ রেসপন্সিভ ডিজাইন */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+}

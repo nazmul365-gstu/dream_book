@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookDreams</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="centered-nav">
+        <div class="nav-header">
+            <h1 class="site-title">DreamsBooks</h1>
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'books:home' %}">Home</a>
+            {% if user.is_authenticated %}
+                <div class="dropdown">
+                    <a href="{% url 'books:book_list' %}" class="dropdown-toggle">Book List</a>
+                    <div class="dropdown-menu">
+                        <a href="{% url 'books:book_list' %}?type=free">Free Books</a>
+                        <a href="{% url 'books:book_list' %}?type=premium">Premium Books</a>
+                    </div>
+                </div>
+                <span class="welcome-text">Welcome, {{ user.username }}!</span>
+                <a href="{% url 'books:logout' %}" class="logout-btn">Logout</a>
+            {% else %}
+                <a href="{% url 'books:login' %}">Login</a>
+                <a href="{% url 'books:signup' %}">Sign Up</a>
+            {% endif %}
+        </div>
+    </nav>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+</body>
+<style>
+
+
+
+</html>

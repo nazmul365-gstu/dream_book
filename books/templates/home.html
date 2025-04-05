@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="home-container">
+        {% if username %}
+            <h1>Welcome, {{ username }}!</h1>
+            <p>Explore your favorite books below.</p>
+        {% else %}
+            <h1>Welcome to BookDreams</h1>
+            <p>Discover amazing books! Please <a href="{% url 'books:login' %}">login</a> to get started.</p>
+        {% endif %}
+
+        <!-- Search Bar -->
+        <form method="get" action="{% url 'books:home' %}" class="search-form">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search by title or author...">
+            <button type="submit" class="search-btn">Search</button>
+        </form>
+
+        <!-- Statistics -->
+        <div class="stats">
+            <p>Total Books: <strong>{{ total_books }}</strong></p>
+            <p>Total Authors: <strong>{{ authors }}</strong></p>
+        </div>
+
+        <!-- Book Types (Categories) -->
+        <div class="book-types">
+            <h2>Book Categories</h2>
+            {% for book_type in book_types %}
+                <div class="book-type">
+                    <h3>{{ book_type.name }}</h3>
+                    <div class="authors">
+                        {% for book in book_type.book_set.all %}
+                            <div><a href="{% url 'books:home' %}?author={{ book.author|urlencode }}">{{ book.author }}</a></div>
+                        {% empty %}
+                            <div>No authors available</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% empty %}
+                <p>No book categories available yet.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Search or Author Filter Results -->
+        {% if books %}
+            <h2>{% if selected_author %}Books by {{ selected_author }}{% else %}Search Results{% endif %}</h2>
+            <div class="book-container">
+                {% for book in books %}
+                    <div class="book-card">
+                        {% if book.image_url %}
+                            <img src="{{ book.image_url }}" alt="{{ book.title }}" class="book-image" style="width: 200px; height: 300px; object-fit: cover;">
+                        {% else %}
+                            <p>No image available</p>
+                        {% endif %}
+                        <h3><a href="{% url 'books:book_detail' book.id %}">{{ book.title }}</a></h3>
+                        <p><strong>Author:</strong> {{ book.author }}</p>
+                        <p><strong>Type:</strong> {{ book.book_type.name }}</p>
+                        <p><strong>Price:</strong> {% if book.is_free %}Free{% else %}{{ book.price }} BDT{% endif %}</p>
+                    </div>
+                {% empty %}
+                    <p>No books found.</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Pagination -->
+        <div class="pagination">
+            {% if books.has_previous %}
+                <a href="?page=1">First</a>
+                <a href="?page={{ books.previous_page_number }}">Prev</a>
+            {% endif %}
+
+            <span>Page {{ books.number }} of {{ books.paginator.num_pages }}</span>
+
+            {% if books.has_next %}
+                <a href="?page={{ books.next_page_number }}">Next</a>
+                <a href="?page={{ books.paginator.num_pages }}">Last</a>
+            {% endif %}
+        </div>
+
+    </div>
+
+
+{% endblock %}

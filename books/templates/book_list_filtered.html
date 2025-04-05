@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+{% block content %}
+    <h2>{{ title }}</h2>
+    <div class="book-container">
+        {% for book in books %}
+            <div class="book-card">
+                <h3><a href="{% url 'book_detail' book.id %}">{{ book.title }}</a></h3>
+                <p><strong>Author:</strong> {{ book.author }}</p>
+                <p>{{ book.description }}</p>
+                <p><strong>Price:</strong> {% if book.is_free %}Free{% else %}{{ book.price }} BDT{% endif %}</p>
+                <p><strong>Published:</strong> {{ book.published_date }}</p>
+                {% if book.added_by == user %}
+                    <a href="{% url 'update_book' book.id %}">Update</a>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No {{ title|lower }} available.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,62 @@
+<!-- templates/book_detail.html -->
+{% extends 'base.html' %}
+{% block content %}
+<div class="book-detail-container">
+    <h1>{{ book.title }}</h1>
+    <div class="book-info">
+        <div class="book-image">
+            {% if book.image_url %}
+                <img src="{{ book.image_url }}" alt="{{ book.title }}" class="book-img">
+            {% else %}
+                <p>No image available</p>
+            {% endif %}
+        </div>
+        <div class="book-details">
+            <p><strong>Author:</strong> {{ book.author }}</p>
+            <p><strong>Book Type:</strong> {{ book.book_type.name }}</p>
+            <p><strong>Description:</strong> {{ book.description }}</p>
+            <p><strong>Price:</strong> {% if book.is_free %}Free{% else %}{{ book.price }} BDT{% endif %}</p>
+            <p><strong>Published:</strong> {{ book.published_date }}</p>
+            <p><strong>Added by:</strong> {{ book.added_by.username }}</p>
+            {% if book.download_link %}
+                <p><strong>Download:</strong> <a href="{{ book.download_link }}" class="download-btn" target="_blank">Download Book</a></p>
+            {% else %}
+                <p>No download available</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="reviews-container">
+        <h2>Reviews</h2>
+        {% for review in reviews %}
+            <div class="review">
+                <p><strong>{{ review.user.username }}</strong> (Rating: {{ review.rating }}/5)</p>
+                <p>{{ review.comment }}</p>
+                <p><small>{{ review.created_at }}</small></p>
+            </div>
+        {% empty %}
+            <p>No reviews yet.</p>
+        {% endfor %}
+    </div>
+
+    <!-- Add Review Form -->
+    {% if user.is_authenticated %}
+        <div class="review-form-container">
+            <h3>Add a Review</h3>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="rating">Rating (1-5):</label>
+                    <input type="number" name="rating" id="rating" min="1" max="5" required class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <textarea name="comment" id="comment" required class="form-textarea"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Review</button>
+            </form>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

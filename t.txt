@@ -1,0 +1,48 @@
+
+BookDreams/
+│
+├── BookDreams/                  # Django প্রজেক্ট ফোল্ডার
+│   ├── __pycache__/             # Python কম্পাইল ফাইল
+│   ├── __init__.py              # Python মডিউল ফাইল
+│   ├── asgi.py                  # ASGI কনফিগারেশন
+│   ├── settings.py              # Django সেটিংস
+│   ├── urls.py                  # মেইন URL রাউট
+│   └── wsgi.py                  # WSGI কনফিগারেশন
+│
+├── books/                       # Django অ্যাপ
+│   ├── __pycache__/             # Python কম্পাইল ফাইল
+│   ├── migrations/              # ডাটাবেস মাইগ্রেশন ফাইল
+│   │   ├── __pycache__/
+│   │   ├── 0001_initial.py      # প্রাথমিক মাইগ্রেশন
+│   │   ├── 0002_review.py       # রিভিউ মডেল মাইগ্রেশন
+│   │   ├── ...                  # আরও মাইগ্রেশন ফাইল (মোট 12টি)
+│   │   └── __init__.py
+│   ├── templates/               # HTML টেমপ্লেট
+│   │   ├── add_book.html
+│   │   ├── base.html
+│   │   ├── book_detail.html
+│   │   ├── book_list.html
+│   │   ├── book_list_filtered.html
+│   │   ├── home.html
+│   │   ├── login.html
+│   │   ├── logout.html
+│   │   ├── signup.html
+│   │   ├── update_book.html
+│   │   └── __init__.py
+│   ├── __init__.py
+│   ├── admin.py                 # Django অ্যাডমিন কনফিগ
+│   ├── apps.py                  # অ্যাপ কনফিগ
+│   ├── models.py                # ডাটাবেস মডেল
+│   ├── tests.py                 # টেস্ট কেস
+│   ├── urls.py                  # অ্যাপ-স্পেসিফিক URL
+│   └── views.py                 # ভিউ লজিক
+│
+├── static/                      # স্ট্যাটিক ফাইল (CSS, JS, ইমেজ)
+├── static_collected/            # কালেক্ট করা স্ট্যাটিক ফাইল
+├── staticfiles/                 # Whitenoise-এর জন্য স্ট্যাটিক ফাইল
+├── venv/                        # Python virtual environment
+├── db.sqlite3                   # SQLite ডাটাবেস
+├── manage.py                    # Django ম্যানেজমেন্ট স্ক্রিপ্ট
+├── README.md                    # প্রজেক্ট ডকুমেন্টেশন
+├── requirements.txt             # Python ডিপেন্ডেন্সি
+└── t.txt                        # অজানা ফাইল (সম্ভবত টেম্পোরারি)
